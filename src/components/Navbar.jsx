@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const MotionNavlink = motion(NavLink)
 
-  const navLinks = ["How it works", "About us", "Blog", "Contact us"];
+  const navLinks = [
+    { name: "How it works", path: "/howItWorks" },
+    { name: "About Us", path: "/about" },
+    { name: "Blog", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   // Mobile menu animation
   const mobileMenuVariants = {
@@ -43,30 +50,31 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <motion.div
+          <MotionNavlink
+          to={"/"}
             className="text-xl font-semibold text-emerald-400 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             🏠 EstateHub
-          </motion.div>
+          </MotionNavlink>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link, i) => (
-              <motion.a
-                key={link}
-                href="#"
+              <MotionNavlink
+                key={link.name}
+                to={link.path}
                 className="text-gray-200 hover:text-emerald-400 relative group"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.4 }}
                 whileHover={{ y: -2 }}
               >
-                {link}
+                {link.name}
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-emerald-400 transition-all duration-300 group-hover:w-full" />
-              </motion.a>
+              </MotionNavlink>
             ))}
           </div>
 
@@ -123,17 +131,17 @@ const Navbar = () => {
             className="md:hidden bg-[#1F2937] px-6 pb-6 space-y-4 overflow-hidden"
           >
             {navLinks.map((link, i) => (
-              <motion.a
-                key={link}
-                href="#"
+              <MotionNavlink
+                key={link.name}
+                to={link.path}
                 custom={i}
                 variants={menuItemVariants}
                 initial="hidden"
                 animate="visible"
                 className="block text-gray-200 hover:text-emerald-400 py-2"
               >
-                {link}
-              </motion.a>
+                {link.name}
+              </MotionNavlink>
             ))}
 
             <motion.div

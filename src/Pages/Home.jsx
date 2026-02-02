@@ -1,7 +1,9 @@
 import React from "react";
-import SectionA from "./sectionA";
-import SectionB from "./sectionB";
-import SectionC from "./sectionC";
+import SectionA from "../sections/SectionA";
+import SectionB from "../sections/SectionB";
+import SectionC from "../sections/SectionC";
+import SectionD from "../sections/SectionD";
+import SectionE from "../sections/SectionE";
 
 const Home = () => {
   return (
@@ -132,6 +134,12 @@ const Home = () => {
 
       {/* section - 3 */}
       <SectionC />
+
+      {/* section - 4 */}
+      <SectionD />
+
+      {/* section- 5 */}
+      <SectionE />
     </>
   );
 };
