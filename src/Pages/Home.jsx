@@ -4,6 +4,7 @@ import SectionB from "../sections/SectionB";
 import SectionC from "../sections/SectionC";
 import SectionD from "../sections/SectionD";
 import SectionE from "../sections/SectionE";
+import SectionF from "../sections/SectionF";
 
 const Home = () => {
   return (
@@ -140,6 +141,9 @@ const Home = () => {
 
       {/* section- 5 */}
       <SectionE />
+
+      {/* section - 6 */}
+      <SectionF />
     </>
   );
 };

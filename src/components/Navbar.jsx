@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const MotionNavlink = motion(NavLink)
+  const MotionNavlink = motion(NavLink);
 
   const navLinks = [
-    { name: "How it works", path: "/howItWorks" },
+    { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Blog", path: "/" },
     { name: "Contact", path: "/contact" },
@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <MotionNavlink
-          to={"/"}
+            to={"/"}
             className="text-xl font-semibold text-emerald-400 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -80,23 +80,25 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <motion.button
+            <MotionNavlink
+              to={"/login"}
               className="text-gray-200 border border-gray-500 px-4 py-2 rounded-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Login
-            </motion.button>
+            </MotionNavlink>
 
-            <motion.button
+            <MotionNavlink
+              to={"/signup"}
               className="bg-emerald-500 hover:bg-emerald-600 text-black font-medium px-4 py-2 rounded-md shadow-lg shadow-emerald-500/20"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Sign up
-            </motion.button>
+            </MotionNavlink>
           </div>
 
           {/* Mobile Toggle */}
